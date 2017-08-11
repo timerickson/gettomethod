@@ -1,0 +1,16 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "gettomethod"
+  namespace: "ddos-disco"
+  labels:
+    app: "gettomethod"
+spec:
+  rules:
+  - host: "gettomethod.ddos-disco.platform.r53.nordstrom.net"
+    http:
+      paths:
+      - path: "/"
+        backend:
+          serviceName: "gettomethod"
+          servicePort: 80
