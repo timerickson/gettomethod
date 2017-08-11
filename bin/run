@@ -1,0 +1,13 @@
+#!/bin/bash
+#################
+# usage: bin/run
+#################
+
+version="$(git rev-parse --short HEAD)"
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+
+$dir/bin/build linux amd64
+
+echo "Building and running $version of gettomethod on Docker"
+docker build -t gettomethod:$version $dir
+docker run -i -p 8080:8080 gettomethod:$version

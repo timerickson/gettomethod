@@ -1,0 +1,16 @@
+#!/bin/bash
+##############################
+# usage: bin/build [os] [arch]
+##############################
+
+# build context
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+
+if [ -z "$1" ]; then
+    echo "Building for host os/arch"
+    go build $dir/gettomethod.go 
+else
+    GOOS=$1 GOARCH=$2
+    echo "Building for $GOOS/$GOARCH"
+    GOOS=$GOOS GOARCH=$GOARCH go build -o "gettomethod-$GOOS-$GOARCH" $dir/gettomethod.go
+fi

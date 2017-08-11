@@ -18,6 +18,7 @@ import (
 func main() {
 	http.HandleFunc("/post", toPost)
 	http.HandleFunc("/put", toPut)
+	fmt.Println("Starting server on port 8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
