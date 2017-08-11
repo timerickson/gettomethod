@@ -18,6 +18,7 @@ import (
 func main() {
 	http.HandleFunc("/post", toPost)
 	http.HandleFunc("/put", toPut)
+	http.HandleFunc("/healthz", healthz)
 	fmt.Println("Starting server on port 8080")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
@@ -41,6 +42,11 @@ func toPut(w http.ResponseWriter, r *http.Request) {
 	}
 	info.method = "PUT"
 	doRequest(info, w)
+}
+
+func healthz(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(200)
+	w.Write([]byte("ok"))
 }
 
 func doRequest(info requestInfo, w http.ResponseWriter) error {

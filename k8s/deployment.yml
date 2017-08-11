@@ -22,7 +22,7 @@ spec:
         - name: "gettomethod"
           readinessProbe:
             httpGet:
-              path: / 
+              path: /healthz 
               port: 8080
               scheme: HTTP
             failureThreshold: 5
@@ -30,7 +30,7 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 5
             timeoutSeconds: 2
-          image: maazghani/gettomethod
+          image: maazghani/gettomethod:v2
           imagePullPolicy: Always
           ports:
             - name: http

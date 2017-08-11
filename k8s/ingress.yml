@@ -7,7 +7,7 @@ metadata:
     app: "gettomethod"
 spec:
   rules:
-  - host: "gettomethod.ddos-disco.r53.nordstrom.net"
+  - host: "gettomethod.ddos-disco.platform.r53.nordstrom.net"
     http:
       paths:
       - path: "/"
